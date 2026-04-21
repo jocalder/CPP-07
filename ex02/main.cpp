@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:00:18 by jocalder          #+#    #+#             */
-/*   Updated: 2026/04/01 18:16:53 by jocalder         ###   ########.fr       */
+/*   Updated: 2026/04/21 12:07:12 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #define MAX_VAL 750
 
 template <typename T>
-void	printSimpleArray(const Array<T>& array, const std::string& name)
+void	printArray(const Array<T>& array, const std::string& name)
 {
 	std::cout << name << "(size = " << array.getSize() << ") ";
 	for (unsigned int i = 0; i < array.getSize(); i++)
-		std::cout << array[i];
+		std::cout << array[i] << " ";
 	std::cout << std::endl;
 }
 int main(int, char**)
@@ -88,35 +88,35 @@ int main(int, char**)
 	
 	for (unsigned int i = 0; i < values.getSize(); i++)
 		values[i] = i * 10;
-	printSimpleArray(values, "small array");
+	printArray(values, "small array");
 	
 	std::cout << "TEST 4: COPY CONSTRUCTOR" << std::endl;
 	Array<int>	copy(values);
-	printSimpleArray(copy, "copy of values before change");
+	printArray(copy, "copy of values before change");
 
 	values[0] = 42;
-	printSimpleArray(values, "value after change");
-	printSimpleArray(copy, "copy after original changed");
+	printArray(values, "value after change");
+	printArray(copy, "copy after original changed");
 
 	if (copy[0] != values[0])
 		std::cout << "Copy works in copy constructor." << std::endl;
 	else
-		std::cout << "ERROR: shallow copy detected in copy constructor." << std::endl;
+		std::cout << "ERROR: copy detected in copy constructor." << std::endl;
 	
 	std::cout << "TEST 5: ASSIGMENT OPERATOR" << std::endl;
 	Array<int>	assigned;
 
 	assigned = values;
-	printSimpleArray(assigned, "assigned array before change");
+	printArray(assigned, "assigned array before change");
 
 	values[1] = 34;
-	printSimpleArray(values, "values after change");
-	printSimpleArray(assigned, "assigned after original changed");
+	printArray(values, "values after change");
+	printArray(assigned, "assigned after original changed");
 
 	if (assigned[1] != values[1])
-		std::cout << "Copy works in copy constructor." << std::endl;
+		std::cout << "Assigment works in constructor." << std::endl;
 	else
-		std::cout << "ERROR: shallow copy detected in copy constructor." << std::endl;
+		std::cout << "ERROR: copy detected in assigment constructor." << std::endl;
 	
 	std::cout << "TEST 6: STRING ARRAY" << std::endl;
 	Array<std::string> words(4);
@@ -124,14 +124,14 @@ int main(int, char**)
 	words[1] = "this ";
 	words[2] = "is ";
 	words[3] = "42.";
-	printSimpleArray(words, "words before change");
+	printArray(words, "words before change");
 
 	Array<std::string> copyWords(words);
-	printSimpleArray(copyWords, "copy words before change");
+	printArray(copyWords, "copy words before change");
 	
 	words[0] = "hi ";
-	printSimpleArray(words, "words after change");
-	printSimpleArray(copyWords, "copy words after original changed");
+	printArray(words, "words after change");
+	printArray(copyWords, "copy words after original changed");
 
 	if (words[0] != copyWords[0])
 		std::cout << "Copy works in copy constructor." << std::endl;

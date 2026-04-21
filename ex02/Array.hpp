@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 16:59:27 by jocalder          #+#    #+#             */
-/*   Updated: 2026/04/01 17:34:37 by jocalder         ###   ########.fr       */
+/*   Updated: 2026/04/21 12:11:01 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ class	Array
 		T&	operator[](unsigned int index)
 		{
 			if (index >= _size)
-				throw std::exception();
+				throw std::runtime_error("Error: index out of bounds.");
 			return (_data[index]);
 		}
 		const T&	operator[](unsigned int index) const
 		{
 			if (index >= _size)
-				throw std::exception();
+				throw std::runtime_error("Error: index out of bounds.");
 			return (_data[index]);
 		}
 		
